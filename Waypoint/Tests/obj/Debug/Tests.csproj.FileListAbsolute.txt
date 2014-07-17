@@ -1,2 +1,0 @@
-C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Tests\bin\Debug\EntityFramework.dll
-C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Tests\bin\Debug\EntityFramework.SqlServer.dll

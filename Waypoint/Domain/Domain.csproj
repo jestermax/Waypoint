@@ -51,8 +51,11 @@
     <Compile Include="Geocoding\IGeocoder.cs" />
     <Compile Include="Geocoding\MapQuestGeocoder.cs" />
     <Compile Include="Geocoding\NominatimGeocoder.cs" />
+    <Compile Include="Helpers\ApiTokenGenerator.cs" />
     <Compile Include="Helpers\RandomStringGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ApiTokenRepository.cs" />
+    <Compile Include="Repositories\IApiTokenRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
