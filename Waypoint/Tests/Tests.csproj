@@ -57,6 +57,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Geocoding\MapQuestGeocoderTest.cs" />
     <Compile Include="Geocoding\NominatimGeocoderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -11,16 +11,16 @@ using Domain.Helpers;
 namespace Tests.Geocoding
 {
     [TestClass]
-    public class NominatimGeocoderTest
+    public class MapQuestGeocoderTest
     {
-        private readonly int numberOfRequests = 10;
+        private static readonly int numberOfRequests = 10;
         private readonly string forwardGeocodeRequest = "CN Tower, Toronto, ON";
-        private readonly string reverseGeocodeResponse = "2590 Armour Crescent, Burlington, Ontario, L7M4A9, Canada";
+        private readonly string reverseGeocodeResponse = "2590 Armour Crescent, Burlington, ON, L7M4A9, CA";
 
         [TestMethod]
         public void ForwardGeocodeLoad()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             for (var i = 0; i < numberOfRequests; i++)
             {
@@ -38,7 +38,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public void ForwardGeocodeLoadAsync()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             Parallel.For(0, numberOfRequests, async i =>
             {
@@ -56,7 +56,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public void ForwardGeocodeValidAddress()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             var result = geocoder.Geocode(forwardGeocodeRequest);
 
@@ -71,7 +71,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public async void ForwardGeocodeValidAddressAsync()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             var result = await geocoder.GeocodeAsync(forwardGeocodeRequest);
 
@@ -86,8 +86,8 @@ namespace Tests.Geocoding
         [TestMethod]
         public void ForwardGeocodeInvalidAddress()
         {
-            var geocoder = new NominatimGeocoder();
-            
+            var geocoder = new MapQuestGeocoder();
+
             var result = geocoder.Geocode(RandomStringGenerator.Create(100));
 
             Assert.IsNull(result);
@@ -96,7 +96,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public void ForwardGeocodeBlankAddress()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             var result = geocoder.Geocode(String.Empty);
 
@@ -106,7 +106,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public void ForwardGeocodeWhitespaceAddress()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             var result = geocoder.Geocode("     ");
 
@@ -116,7 +116,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public void ForwardGeocodeNullAddress()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             var result = geocoder.Geocode(null);
 
@@ -126,7 +126,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public void ReverseGeocodeValidLatitudeAndLongitude()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             var result = geocoder.ReverseGeocode(43.4046593, -79.8091507);
 
@@ -137,7 +137,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public void ReverseGeocodeValidDbGeography()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             var result = geocoder.ReverseGeocode(DbGeography.PointFromText(
                 String.Format("POINT({1} {0})", 43.4046593, -79.8091507),
@@ -150,7 +150,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public async void ReverseGeocodeValidLatitudeAndLongitudeAsync()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             var result = await geocoder.ReverseGeocodeAsync(43.4046593, -79.8091507);
 
@@ -161,7 +161,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public async void ReverseGeocodeValidDbGeographyAsync()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             var result = await geocoder.ReverseGeocodeAsync(DbGeography.PointFromText(
                 String.Format("POINT({1} {0})", 43.4046593, -79.8091507),
@@ -174,7 +174,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public void ReverseGeocodeInvalidLatitude()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             var result = geocoder.ReverseGeocode(-91, 0);
 
@@ -184,7 +184,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public void ReverseGeocodeInvalidLongitude()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             var result = geocoder.ReverseGeocode(0, -181);
 
@@ -194,7 +194,7 @@ namespace Tests.Geocoding
         [TestMethod]
         public void ReverseGeocodeNullDbGeography()
         {
-            var geocoder = new NominatimGeocoder();
+            var geocoder = new MapQuestGeocoder();
 
             var result = geocoder.ReverseGeocode(null);
 
