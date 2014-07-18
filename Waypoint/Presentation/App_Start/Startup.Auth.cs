@@ -8,6 +8,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using System;
 using Presentation.Models;
+using Domain.Authentication;
 
 namespace Presentation
 {

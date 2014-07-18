@@ -4,7 +4,7 @@ using System.Data.Entity.Spatial;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using Domain;
+using Domain.Configuration;
 using Domain.Geocoding;
 using Domain.Helpers;
 

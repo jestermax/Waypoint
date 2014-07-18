@@ -4,7 +4,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using WebMatrix.WebData;
 
-using Domain;
+using Domain.Configuration;
 
 namespace Presentation
 {
