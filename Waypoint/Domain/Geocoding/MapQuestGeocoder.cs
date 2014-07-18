@@ -6,6 +6,8 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 
+using Domain.Configuration;
+
 namespace Domain.Geocoding
 {
     public class MapQuestGeocoder : IGeocoder

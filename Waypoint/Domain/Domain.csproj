@@ -47,7 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppConfiguration.cs" />
+    <Compile Include="Configuration\AppConfiguration.cs" />
+    <Compile Include="Configuration\ApplicationUserManager.cs" />
     <Compile Include="Geocoding\IGeocoder.cs" />
     <Compile Include="Geocoding\MapQuestGeocoder.cs" />
     <Compile Include="Geocoding\NominatimGeocoder.cs" />
