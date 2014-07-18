@@ -33,7 +33,7 @@ namespace Presentation.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterDto registerDto)
+        public async Task<ActionResult> Index(RegisterDto registerDto)
         {
             if (ModelState.IsValid)
             {
