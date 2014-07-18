@@ -78,6 +78,7 @@
     <Compile Include="Authentication\ApplicationUser.cs" />
     <Compile Include="Configuration\AppConfiguration.cs" />
     <Compile Include="Configuration\ApplicationUserManager.cs" />
+    <Compile Include="Dto\Inbound\RegisterDto.cs" />
     <Compile Include="Geocoding\IGeocoder.cs" />
     <Compile Include="Geocoding\MapQuestGeocoder.cs" />
     <Compile Include="Geocoding\NominatimGeocoder.cs" />
@@ -92,7 +93,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dto\" />
+    <Folder Include="Dto\Outbound\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
