@@ -59,3 +59,10 @@ C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Presentation\bin\Microso
 C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Presentation\obj\Release\Presentation.csprojResolveAssemblyReference.cache
 C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Presentation\obj\Release\Presentation.dll
 C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Presentation\obj\Release\Presentation.pdb
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Presentation\bin\Domain.dll
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Presentation\bin\Ninject.dll
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Presentation\bin\Ninject.Web.Common.dll
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Presentation\bin\WebActivatorEx.dll
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Presentation\bin\Domain.pdb
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Presentation\bin\Ninject.xml
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Presentation\bin\Ninject.Web.Common.xml

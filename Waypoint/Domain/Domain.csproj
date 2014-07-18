@@ -76,9 +76,11 @@
   <ItemGroup>
     <Compile Include="Authentication\ApplicationDbContext.cs" />
     <Compile Include="Authentication\ApplicationUser.cs" />
+    <Compile Include="Authentication\ApplicationUserManager.cs" />
     <Compile Include="Configuration\AppConfiguration.cs" />
     <Compile Include="Configuration\ApplicationUserManager.cs" />
     <Compile Include="Dto\Inbound\RegisterDto.cs" />
+    <Compile Include="Email\EmailService.cs" />
     <Compile Include="Geocoding\IGeocoder.cs" />
     <Compile Include="Geocoding\MapQuestGeocoder.cs" />
     <Compile Include="Geocoding\NominatimGeocoder.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApiTokenRepository.cs" />
     <Compile Include="Repositories\IApiTokenRepository.cs" />
+    <Compile Include="SMS\SmsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
