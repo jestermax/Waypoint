@@ -2,9 +2,6 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using WebMatrix.WebData;
-
-using Domain.Configuration;
 
 namespace Presentation
 {
@@ -23,15 +20,15 @@ namespace Presentation
             var formatters = GlobalConfiguration.Configuration.Formatters;
             formatters.Remove(formatters.XmlFormatter);
 
-            if (!WebSecurity.Initialized)
-            {
-                //WebSecurity.InitializeDatabaseConnection(
-                //    AppConfiguration.ConnectionStringName,
-                //    AppConfiguration.UserTableName,
-                //    AppConfiguration.UserIdColumn,
-                //    AppConfiguration.UserNameColumn,
-                //    false);
-            }
+            //if (!WebSecurity.Initialized)
+            //{
+            //    //WebSecurity.InitializeDatabaseConnection(
+            //    //    AppConfiguration.ConnectionStringName,
+            //    //    AppConfiguration.UserTableName,
+            //    //    AppConfiguration.UserIdColumn,
+            //    //    AppConfiguration.UserNameColumn,
+            //    //    false);
+            //}
 
             GlobalConfiguration.Configuration.EnsureInitialized();
         }
