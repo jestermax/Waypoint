@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="waypointapp_dbModelStoreContainer" CdmEntityContainer="waypointapp_dbEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="waypointapp_dbModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApiTokens">
+      <EntityTypeMapping TypeName="waypointapp_dbModel.ApiToken">
+        <MappingFragment StoreEntitySet="ApiToken">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DateIssued" ColumnName="DateIssued" />
+          <ScalarProperty Name="DateExpires" ColumnName="DateExpires" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="waypointapp_dbModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TimeZones">
+      <EntityTypeMapping TypeName="waypointapp_dbModel.TimeZone">
+        <MappingFragment StoreEntitySet="TimeZone">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Offset" ColumnName="Offset" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLocations">
+      <EntityTypeMapping TypeName="waypointapp_dbModel.UserLocation">
+        <MappingFragment StoreEntitySet="UserLocation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Accuracy" ColumnName="Accuracy" />
+          <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+          <ScalarProperty Name="DateReceived" ColumnName="DateReceived" />
+          <ScalarProperty Name="Speed" ColumnName="Speed" />
+          <ScalarProperty Name="UserLocationReasonId" ColumnName="UserLocationReasonId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLocationReasons">
+      <EntityTypeMapping TypeName="waypointapp_dbModel.UserLocationReason">
+        <MappingFragment StoreEntitySet="UserLocationReason">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

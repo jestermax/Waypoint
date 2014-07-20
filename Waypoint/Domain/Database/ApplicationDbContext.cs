@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using System.Data.Entity;
 
-namespace Domain.Authentication
+using Microsoft.AspNet.Identity.EntityFramework;
+
+using Domain.Models;
+
+namespace Domain.Database
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -12,5 +16,7 @@ namespace Domain.Authentication
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Account> Accounts { get; set; }
     }
 }

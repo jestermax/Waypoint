@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\aspnet-Presentation-20140716114052.mdf;Initial Catalog=aspnet-Presentation-20140716114052;Integrated Security=True" tags="SqlConnectionString">
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:sfqzfictq5.database.windows.net,1433;Database=waypointapp_db;User ID=waypoint@sfqzfictq5;Password=Super3vilGenius;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\adamstirtan\\Documents\\GitHub\\Waypoint\\Waypoint\\Presentation\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
 </parameters>

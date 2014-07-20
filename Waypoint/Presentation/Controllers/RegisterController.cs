@@ -6,21 +6,22 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
-using Domain.Authentication;
+using Domain.Configuration;
 using Domain.Dto.Inbound;
+using Domain.Models;
 
 namespace Presentation.Controllers
 {
     public class RegisterController : Controller
     {
-        private ApplicationUserManager applicationUserManager;
+        private ApplicationUserManager _applicationUserManager;
 
         public RegisterController()
         { }
 
         public RegisterController(ApplicationUserManager applicationUserManager)
         {
-            this.applicationUserManager = applicationUserManager;
+            _applicationUserManager = applicationUserManager;
         }
 
         [AllowAnonymous]
@@ -83,11 +84,11 @@ namespace Presentation.Controllers
         {
             get
             {
-                return applicationUserManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _applicationUserManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
             private set
             {
-                applicationUserManager = value;
+                _applicationUserManager = value;
             }
         }
     }
