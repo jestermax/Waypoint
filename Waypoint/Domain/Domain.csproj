@@ -84,6 +84,10 @@
     <Compile Include="Migrations\201407200228317_AccountIsRequired.Designer.cs">
       <DependentUpon>201407200228317_AccountIsRequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407200235505_AddUserLocationReason.cs" />
+    <Compile Include="Migrations\201407200235505_AddUserLocationReason.Designer.cs">
+      <DependentUpon>201407200235505_AddUserLocationReason.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Configuration\ApplicationUserManager.cs" />
     <Compile Include="Configuration\AppConfiguration.cs" />
@@ -101,6 +105,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\KnownId.cs" />
+    <Compile Include="Models\UserLocationReason.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApiTokenRepository.cs" />
     <Compile Include="Repositories\IApiTokenRepository.cs" />
@@ -126,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407200228317_AccountIsRequired.resx">
       <DependentUpon>201407200228317_AccountIsRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407200235505_AddUserLocationReason.resx">
+      <DependentUpon>201407200235505_AddUserLocationReason.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

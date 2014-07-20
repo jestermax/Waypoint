@@ -18,5 +18,6 @@ namespace Domain.Database
         }
 
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<UserLocationReason> UserLocationReasons { get; set; }
     }
 }
