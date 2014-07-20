@@ -88,6 +88,10 @@
     <Compile Include="Migrations\201407200235505_AddUserLocationReason.Designer.cs">
       <DependentUpon>201407200235505_AddUserLocationReason.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407200247232_AddUserLocationTable.cs" />
+    <Compile Include="Migrations\201407200247232_AddUserLocationTable.Designer.cs">
+      <DependentUpon>201407200247232_AddUserLocationTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Configuration\ApplicationUserManager.cs" />
     <Compile Include="Configuration\AppConfiguration.cs" />
@@ -105,6 +109,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\KnownId.cs" />
+    <Compile Include="Models\UserLocation.cs" />
     <Compile Include="Models\UserLocationReason.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApiTokenRepository.cs" />
@@ -134,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407200235505_AddUserLocationReason.resx">
       <DependentUpon>201407200235505_AddUserLocationReason.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407200247232_AddUserLocationTable.resx">
+      <DependentUpon>201407200247232_AddUserLocationTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
