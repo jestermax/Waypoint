@@ -1,34 +1,65 @@
 ﻿using System;
-
+using System.Data.Entity;
+using System.Linq;
+using Domain.Database;
 using Domain.Models;
 
 namespace Domain.Repositories
 {
     public class ApiTokenRepository : IApiTokenRepository
     {
-        public ApiToken Get(string id)
+        private readonly ApplicationDbContext _context = ApplicationDbContext.Create();
+
+        public ApiToken Get(string token)
         {
-            throw new NotImplementedException();
+            return _context.ApiTokens.FirstOrDefault(a => a.Token.Equals(token));
         }
 
         public ApiToken[] Where(Func<ApiToken, bool> filter)
         {
-            throw new NotImplementedException();
+            return _context.ApiTokens.Where(filter).OrderBy(a => a.DateIssued).ToArray();
         }
 
         public ApiToken Add(ApiToken apiToken)
         {
-            throw new NotImplementedException();
+            _context.ApiTokens.Add(apiToken);
+            _context.SaveChanges();
+
+            return apiToken;
         }
 
         public bool Update(string id, ApiToken apiToken)
         {
-            throw new NotImplementedException();
+            var existing = _context.ApiTokens.Find(id);
+
+            if (existing == null)
+            {
+                return false;
+            }
+
+            existing.DateExpires = apiToken.DateExpires;
+            existing.DateIssued = apiToken.DateIssued;
+            existing.Token = apiToken.Token;
+
+            _context.Entry(existing).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return true;
         }
 
         public bool Remove(string id)
         {
-            throw new NotImplementedException();
+            var apiToken = _context.ApiTokens.Find(id);
+
+            if (apiToken == null)
+            {
+                return false;
+            }
+
+            _context.ApiTokens.Remove(apiToken);
+            _context.SaveChanges();
+
+            return true;
         }
     }
 }

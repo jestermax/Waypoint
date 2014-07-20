@@ -6,7 +6,7 @@ namespace Domain.Repositories
 {
     public interface IApiTokenRepository
     {
-        ApiToken Get(string id);
+        ApiToken Get(string token);
 
         ApiToken[] Where(Func<ApiToken, bool> filter);
 
