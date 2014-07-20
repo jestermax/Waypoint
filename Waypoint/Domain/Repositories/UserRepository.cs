@@ -4,24 +4,24 @@ using Domain.Models;
 
 namespace Domain.Repositories
 {
-    public class ApiTokenRepository : IApiTokenRepository
+    public class UserRepository : IUserRepository
     {
-        public ApiToken Get(string id)
+        public ApplicationUser Get(string id)
         {
             throw new NotImplementedException();
         }
 
-        public ApiToken[] Where(Func<ApiToken, bool> filter)
+        public ApplicationUser[] Where(Func<ApplicationUser, bool> filter)
         {
             throw new NotImplementedException();
         }
 
-        public ApiToken Add(ApiToken apiToken)
+        public ApplicationUser Add(ApplicationUser user)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(string id, ApiToken apiToken)
+        public bool Update(string id, ApplicationUser userProfile)
         {
             throw new NotImplementedException();
         }

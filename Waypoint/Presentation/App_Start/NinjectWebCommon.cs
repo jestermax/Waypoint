@@ -55,20 +55,10 @@ namespace Presentation
 
         private static void RegisterServices(IBindingRoot kernel)
         {
+            kernel.Bind<Domain.Repositories.IApiTokenRepository>().To<Domain.Repositories.ApiTokenRepository>();
+            kernel.Bind<Domain.Repositories.IUserRepository>().To<Domain.Repositories.UserRepository>();
+
             //kernel.Bind<Domain.Authentication.IAuthenticationService>().To<Domain.Authentication.AspNetMembershipAuthenticationService>();
-
-            //kernel.Bind<Domain.Mail.Clients.IMailer>().To<Domain.Mail.Clients.AggregatedMailer>();
-
-            //kernel.Bind<Domain.Repositories.IAccountRepository>().To<Domain.Repositories.AccountRepository>();
-            //kernel.Bind<Domain.Repositories.IApiTokenRepository>().To<Domain.Repositories.ApiTokenRepository>();
-            //kernel.Bind<Domain.Repositories.IColorRepository>().To<Domain.Repositories.ColorRepository>();
-            //kernel.Bind<Domain.Repositories.ICountryRepository>().To<Domain.Repositories.CountryRepository>();
-            //kernel.Bind<Domain.Repositories.IEventRepository>().To<Domain.Repositories.EventRepository>();
-            //kernel.Bind<Domain.Repositories.IPlaceRepository>().To<Domain.Repositories.PlaceRepository>();
-            //kernel.Bind<Domain.Repositories.IPlaceTypeRepository>().To<Domain.Repositories.PlaceTypeRepository>();
-            //kernel.Bind<Domain.Repositories.ITimeZoneRepository>().To<Domain.Repositories.TimeZoneRepository>();
-            //kernel.Bind<Domain.Repositories.IUserLocationRepository>().To<Domain.Repositories.UserLocationRepository>();
-            //kernel.Bind<Domain.Repositories.IUserProfileRepository>().To<Domain.Repositories.UserProfileRepository>();
         }
     }
 }

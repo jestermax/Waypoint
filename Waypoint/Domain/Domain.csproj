@@ -68,6 +68,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\HttpContextFactory.cs" />
     <Compile Include="Database\ApplicationDbContext.cs" />
     <Compile Include="Migrations\201407200226456_AddAccountToApplicationUser.cs" />
     <Compile Include="Migrations\201407200226456_AddAccountToApplicationUser.Designer.cs">
@@ -96,6 +98,11 @@
     <Compile Include="Migrations\201407200258103_AddCountryTableAndSeedDatabase.Designer.cs">
       <DependentUpon>201407200258103_AddCountryTableAndSeedDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407201838524_AddApiTokenTable.cs" />
+    <Compile Include="Migrations\201407201838524_AddApiTokenTable.Designer.cs">
+      <DependentUpon>201407201838524_AddApiTokenTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApiToken.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Configuration\ApplicationUserManager.cs" />
     <Compile Include="Configuration\AppConfiguration.cs" />
@@ -119,6 +126,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApiTokenRepository.cs" />
     <Compile Include="Repositories\IApiTokenRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="SMS\SmsService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407200258103_AddCountryTableAndSeedDatabase.resx">
       <DependentUpon>201407200258103_AddCountryTableAndSeedDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407201838524_AddApiTokenTable.resx">
+      <DependentUpon>201407201838524_AddApiTokenTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
