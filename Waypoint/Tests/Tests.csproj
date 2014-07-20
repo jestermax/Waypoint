@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Geocoding\MapQuestGeocoderTest.cs" />
     <Compile Include="Geocoding\NominatimGeocoderTest.cs" />
+    <Compile Include="KnownId\KnownIdTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

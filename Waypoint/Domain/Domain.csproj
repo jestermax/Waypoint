@@ -86,6 +86,7 @@
     <Compile Include="Geocoding\NominatimGeocoder.cs" />
     <Compile Include="Helpers\ApiTokenGenerator.cs" />
     <Compile Include="Helpers\RandomStringGenerator.cs" />
+    <Compile Include="Models\KnownId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApiTokenRepository.cs" />
     <Compile Include="Repositories\IApiTokenRepository.cs" />

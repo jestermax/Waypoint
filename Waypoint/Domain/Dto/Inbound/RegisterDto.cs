@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-using Domain.Configuration;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Dto.Inbound
 {
