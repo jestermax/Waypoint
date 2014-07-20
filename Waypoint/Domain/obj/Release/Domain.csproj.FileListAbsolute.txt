@@ -25,3 +25,9 @@ C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\bin\Release\Newto
 C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.csprojResolveAssemblyReference.cache
 C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.dll
 C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.pdb
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.Initial_creation.resources
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.AddAccountToApplicationUser.resources
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.AccountIsRequired.resources
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.AddUserLocationReason.resources
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.AddUserLocationTable.resources
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.csproj.GenerateResource.Cache

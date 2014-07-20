@@ -4,6 +4,9 @@ namespace Domain.Configuration
 {
     public static class AppConfiguration
     {
+        // Waypoint account
+        public static readonly Guid WaypointAccountId = Guid.Parse("74d814a3-f0f1-4871-96f2-c2b595b74810");
+
         // Unit tests constants
         public static readonly Guid UnitTestsApiTokenId = Guid.Parse("00a6fb6e-9c9a-4754-9fc6-5c3401113314");
         public static readonly Guid UnitTestsHomePlaceId = Guid.Parse("2b148da2-b629-443f-8cbd-98eb14312ea7");

@@ -1,3 +1,5 @@
+using System;
+using Domain.Configuration;
 using Domain.Database;
 using Domain.Models;
 
@@ -14,18 +16,26 @@ namespace Domain.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.Accounts.AddOrUpdate(
+                new Account
+                {
+                    Id = AppConfiguration.WaypointAccountId.ToString(),
+                    Name = "Waypoint",
+                    DateCreated = new DateTime(2014, 7, 19, 23, 02, 0).ToUniversalTime(),
+                    DateModified = DateTime.UtcNow
+                });
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Countries.AddOrUpdate(
+                new Country
+                {
+                    Id = KnownId.CountryCanadaId.ToString(),
+                    Name = "Canada"
+                },
+                new Country
+                {
+                    Id = KnownId.CountryUnitedStates.ToString(),
+                    Name = "United States"
+                });
         }
     }
 }
