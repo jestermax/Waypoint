@@ -12,10 +12,10 @@ namespace Domain.Geocoding
 {
     public class MapQuestGeocoder : IGeocoder
     {
-        private static readonly string forwardGeocodeUrl =
+        private const string ForwardGeocodeUrl =
             "http://open.mapquestapi.com/geocoding/v1/address?key={0}&location={1}&maxResults=1&thumbMaps=false";
 
-        private static readonly string reverseGeocodeUrl =
+        private const string ReverseGeocodeUrl =
             "http://open.mapquestapi.com/geocoding/v1/reverse?key={0}&location={1},{2}&maxResults=1&thumbMaps=false";
 
         public DbGeography Geocode(string address)
@@ -25,7 +25,7 @@ namespace Domain.Geocoding
                 return null;
             }
 
-            var request = WebRequest.Create(String.Format(forwardGeocodeUrl, AppConfiguration.MapQuestApiKey, address));
+            var request = WebRequest.Create(String.Format(ForwardGeocodeUrl, AppConfiguration.MapQuestApiKey, address));
 
             using (var response = request.GetResponse() as HttpWebResponse)
             {
@@ -74,7 +74,7 @@ namespace Domain.Geocoding
                 return null;
             }
 
-            var request = WebRequest.Create(String.Format(forwardGeocodeUrl, AppConfiguration.MapQuestApiKey, address));
+            var request = WebRequest.Create(String.Format(ForwardGeocodeUrl, AppConfiguration.MapQuestApiKey, address));
 
             using (var response = await request.GetResponseAsync() as HttpWebResponse)
             {
@@ -158,7 +158,7 @@ namespace Domain.Geocoding
                 return null;
             }
 
-            var request = WebRequest.Create(String.Format(reverseGeocodeUrl, AppConfiguration.MapQuestApiKey, latitude, longitude));
+            var request = WebRequest.Create(String.Format(ReverseGeocodeUrl, AppConfiguration.MapQuestApiKey, latitude, longitude));
 
             using (var response = request.GetResponse() as HttpWebResponse)
             {
@@ -247,7 +247,7 @@ namespace Domain.Geocoding
                 return null;
             }
 
-            var request = WebRequest.Create(String.Format(reverseGeocodeUrl, AppConfiguration.MapQuestApiKey, latitude, longitude));
+            var request = WebRequest.Create(String.Format(ReverseGeocodeUrl, AppConfiguration.MapQuestApiKey, latitude, longitude));
 
             using (var response = await request.GetResponseAsync() as HttpWebResponse)
             {

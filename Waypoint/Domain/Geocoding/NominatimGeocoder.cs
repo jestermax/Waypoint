@@ -12,10 +12,10 @@ namespace Domain.Geocoding
 {
     public class NominatimGeocoder : IGeocoder
     {
-        private static readonly string forwardGeocodeUrl =
+        private const string ForwardGeocodeUrl =
             "http://nominatim.openstreetmap.org/search?q={0}&format=jsonv2&polygon=1&addressdetails=0&limit=1";
 
-        private static readonly string reverseGeocodeUrl =
+        private const string ReverseGeocodeUrl =
             "http://nominatim.openstreetmap.org/reverse?format=json&lat={0}&lon={1}&zoom=18&addressdetails=1";
 
         public DbGeography Geocode(string address)
@@ -25,7 +25,7 @@ namespace Domain.Geocoding
                 return null;
             }
 
-            var request = WebRequest.Create(String.Format(forwardGeocodeUrl, address));
+            var request = WebRequest.Create(String.Format(ForwardGeocodeUrl, address));
 
             using (var response = request.GetResponse() as HttpWebResponse)
             {
@@ -69,7 +69,7 @@ namespace Domain.Geocoding
                 return null;
             }
 
-            var request = WebRequest.Create(String.Format(forwardGeocodeUrl, address));
+            var request = WebRequest.Create(String.Format(ForwardGeocodeUrl, address));
 
             using (var response = await request.GetResponseAsync() as HttpWebResponse)
             {
@@ -148,7 +148,7 @@ namespace Domain.Geocoding
                 return null;
             }
 
-            var request = WebRequest.Create(String.Format(reverseGeocodeUrl, latitude, longitude));
+            var request = WebRequest.Create(String.Format(ReverseGeocodeUrl, latitude, longitude));
 
             using (var response = request.GetResponse() as HttpWebResponse)
             {
@@ -233,7 +233,7 @@ namespace Domain.Geocoding
                 return null;
             }
 
-            var request = WebRequest.Create(String.Format(reverseGeocodeUrl, latitude, longitude));
+            var request = WebRequest.Create(String.Format(ReverseGeocodeUrl, latitude, longitude));
 
             using (var response = await request.GetResponseAsync() as HttpWebResponse)
             {
