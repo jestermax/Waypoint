@@ -78,6 +78,8 @@
   <ItemGroup>
     <Compile Include="Configuration\HttpContextFactory.cs" />
     <Compile Include="Database\ApplicationDbContext.cs" />
+    <Compile Include="Dto\Inbound\LocationUpdateDto.cs" />
+    <Compile Include="Dto\Outbound\UserLocationDto.cs" />
     <Compile Include="Migrations\201407200226456_AddAccountToApplicationUser.cs" />
     <Compile Include="Migrations\201407200226456_AddAccountToApplicationUser.Designer.cs">
       <DependentUpon>201407200226456_AddAccountToApplicationUser.cs</DependentUpon>
@@ -126,7 +128,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApiTokenRepository.cs" />
     <Compile Include="Repositories\IApiTokenRepository.cs" />
+    <Compile Include="Repositories\IUserLocationRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\UserLocationRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="SMS\SmsService.cs" />
   </ItemGroup>
@@ -135,7 +139,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dto\Outbound\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>

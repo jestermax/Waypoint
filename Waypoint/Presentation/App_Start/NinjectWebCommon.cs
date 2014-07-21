@@ -57,8 +57,7 @@ namespace Presentation
         {
             kernel.Bind<Domain.Repositories.IApiTokenRepository>().To<Domain.Repositories.ApiTokenRepository>();
             kernel.Bind<Domain.Repositories.IUserRepository>().To<Domain.Repositories.UserRepository>();
-
-            //kernel.Bind<Domain.Authentication.IAuthenticationService>().To<Domain.Authentication.AspNetMembershipAuthenticationService>();
+            kernel.Bind<Domain.Repositories.IUserLocationRepository>().To<Domain.Repositories.UserLocationRepository>();
         }
     }
 }

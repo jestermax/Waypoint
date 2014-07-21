@@ -39,11 +39,11 @@ namespace Presentation.Controllers
             {
                 var user = new ApplicationUser()
                 {
-                    UserName = registerDto.Email,
-                    Email = registerDto.Email
+                    UserName = registerDto.email,
+                    Email = registerDto.email
                 };
 
-                IdentityResult result = await UserManager.CreateAsync(user, registerDto.Password);
+                IdentityResult result = await UserManager.CreateAsync(user, registerDto.password);
 
                 if (result.Succeeded)
                 {
