@@ -80,6 +80,7 @@
     <Compile Include="Database\ApplicationDbContext.cs" />
     <Compile Include="Dto\Inbound\LocationUpdateDto.cs" />
     <Compile Include="Dto\Outbound\UserLocationDto.cs" />
+    <Compile Include="Geocoding\AggregatedGeocoder.cs" />
     <Compile Include="Migrations\201407200226456_AddAccountToApplicationUser.cs" />
     <Compile Include="Migrations\201407200226456_AddAccountToApplicationUser.Designer.cs">
       <DependentUpon>201407200226456_AddAccountToApplicationUser.cs</DependentUpon>
@@ -122,7 +123,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Country.cs" />
-    <Compile Include="Models\KnownId.cs" />
+    <Compile Include="Configuration\KnownId.cs" />
     <Compile Include="Models\UserLocation.cs" />
     <Compile Include="Models\UserLocationReason.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

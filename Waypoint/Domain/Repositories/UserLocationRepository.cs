@@ -1,24 +1,37 @@
 ﻿using System;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
+
+using Domain.Database;
 using Domain.Models;
 
 namespace Domain.Repositories
 {
     public class UserLocationRepository : IUserLocationRepository
     {
-        public Task<UserLocation> Get(string id)
+        private readonly ApplicationDbContext _context = ApplicationDbContext.Create();
+
+        public async Task<UserLocation> Get(string id)
         {
-            throw new NotImplementedException();
+            return await _context.UserLocations.FindAsync(id);
         }
 
-        public Task<UserLocation[]> Where(Func<UserLocation, bool> filter)
+        public async Task<UserLocation[]> Where(Func<UserLocation, bool> filter)
         {
-            throw new NotImplementedException();
+            return await _context.UserLocations
+                .Where(filter)
+                .OrderByDescending(u => u.DateSent)
+                .AsQueryable()
+                .ToArrayAsync();
         }
 
-        public Task<UserLocation> Add(UserLocation userLocation)
+        public async Task<UserLocation> Add(UserLocation userLocation)
         {
-            throw new NotImplementedException();
+            _context.UserLocations.Add(userLocation);
+            await _context.SaveChangesAsync();
+
+            return userLocation;
         }
 
         public Task<bool> Update(string id, UserLocation userLocation)
@@ -26,9 +39,19 @@ namespace Domain.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> Remove(string id)
+        public async Task<bool> Remove(string id)
         {
-            throw new NotImplementedException();
+            var userLocation = await _context.UserLocations.FindAsync(id);
+
+            if (userLocation == null)
+            {
+                return false;
+            }
+
+            _context.UserLocations.Remove(userLocation);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

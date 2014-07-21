@@ -1,4 +1,5 @@
 using System;
+
 using Domain.Configuration;
 using Domain.Database;
 using Domain.Models;
@@ -28,13 +29,18 @@ namespace Domain.Migrations
             context.Countries.AddOrUpdate(
                 new Country
                 {
-                    Id = KnownId.CountryCanadaId.ToString(),
+                    Id = KnownId.CountryCanadaId,
                     Name = "Canada"
                 },
                 new Country
                 {
-                    Id = KnownId.CountryUnitedStates.ToString(),
+                    Id = KnownId.CountryUnitedStatesId,
                     Name = "United States"
+                },
+                new Country
+                {
+                    Id = KnownId.CountryMexicoId,
+                    Name = "Mexico"
                 });
         }
     }
