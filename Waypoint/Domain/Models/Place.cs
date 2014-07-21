@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Spatial;
 
 namespace Domain.Models
 {
-    public class Account
+    public class Place
     {
         [Key]
         [Required]
@@ -13,18 +13,19 @@ namespace Domain.Models
 
         [Required]
         [MaxLength(128)]
+        public virtual Account Account { get; set; }
+
+        [Required]
+        [MaxLength(256)]
         public string Name { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
+        public DbGeography Boundary { get; set; }
+
+        [Required]
         public DateTime DateCreated { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
         public DateTime DateModified { get; set; }
-
-        public virtual ICollection<Place> Places { get; set; } 
-
-        public virtual ICollection<ApplicationUser> Users { get; set; }
     }
 }

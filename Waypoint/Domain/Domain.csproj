@@ -105,6 +105,10 @@
     <Compile Include="Migrations\201407201838524_AddApiTokenTable.Designer.cs">
       <DependentUpon>201407201838524_AddApiTokenTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407212056207_AddPlacesTable.cs" />
+    <Compile Include="Migrations\201407212056207_AddPlacesTable.Designer.cs">
+      <DependentUpon>201407212056207_AddPlacesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApiToken.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Configuration\ApplicationUserManager.cs" />
@@ -124,6 +128,7 @@
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Configuration\KnownId.cs" />
+    <Compile Include="Models\Place.cs" />
     <Compile Include="Models\UserLocation.cs" />
     <Compile Include="Models\UserLocationReason.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -166,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407201838524_AddApiTokenTable.resx">
       <DependentUpon>201407201838524_AddApiTokenTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407212056207_AddPlacesTable.resx">
+      <DependentUpon>201407212056207_AddPlacesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
