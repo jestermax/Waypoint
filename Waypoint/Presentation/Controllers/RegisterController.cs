@@ -14,7 +14,7 @@ namespace Presentation.Controllers
 {
     public class RegisterController : Controller
     {
-        private ApplicationUserManager _applicationUserManager;
+        private readonly ApplicationUserManager _applicationUserManager;
 
         public RegisterController()
         { }
@@ -35,29 +35,29 @@ namespace Presentation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Index(RegisterDto registerDto)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var user = new ApplicationUser()
-                {
-                    UserName = registerDto.email,
-                    Email = registerDto.email
-                };
+                return View(registerDto);
+            }
 
-                IdentityResult result = await UserManager.CreateAsync(user, registerDto.password);
+            var user = new ApplicationUser
+            {
+                UserName = registerDto.email,
+                Email = registerDto.email
+            };
 
-                if (result.Succeeded)
-                {
-                    await SignInAsync(user, isPersistent: false);
+            var result = await UserManager.CreateAsync(user, registerDto.password);
 
-                    return RedirectToAction("index", "home");
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error);
-                    }
-                }
+            if (result.Succeeded)
+            {
+                await SignInAsync(user, false);
+
+                return RedirectToAction("index", "home");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
             }
 
             return View(registerDto);
@@ -66,7 +66,7 @@ namespace Presentation.Controllers
         private async Task SignInAsync(ApplicationUser user, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-            AuthenticationManager.SignIn(new AuthenticationProperties()
+            AuthenticationManager.SignIn(new AuthenticationProperties
             {
                 IsPersistent = isPersistent
             }, await user.GenerateUserIdentityAsync(UserManager));
@@ -85,10 +85,6 @@ namespace Presentation.Controllers
             get
             {
                 return _applicationUserManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _applicationUserManager = value;
             }
         }
     }
