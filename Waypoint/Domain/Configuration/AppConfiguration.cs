@@ -5,7 +5,10 @@ namespace Domain.Configuration
     public static class AppConfiguration
     {
         // Waypoint account
-        public static readonly Guid WaypointAccountId = Guid.Parse("74d814a3-f0f1-4871-96f2-c2b595b74810");
+        public static readonly string WaypointAccountId = "74d814a3-f0f1-4871-96f2-c2b595b74810";
+        public static readonly string AdamUserId = "70af30fa-2e1e-4459-8a7a-e864299bdb92";
+        public static readonly string LesUserId = "8355d41b-554f-46b0-863c-191491c1e016";
+        public static readonly string CarloUserId = "41269697-f723-45a5-b9b2-397d3127e153";
 
         // Unit tests constants
         public static readonly Guid UnitTestsApiTokenId = Guid.Parse("00a6fb6e-9c9a-4754-9fc6-5c3401113314");
