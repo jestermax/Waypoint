@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
+
+using Domain.Configuration;
 
 namespace Presentation
 {
@@ -14,11 +13,10 @@ namespace Presentation
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            config.Routes.MapHttpRoute(AppConfiguration.ApiRouteName, "api/{controller}/{id}", new
+            {
+                id = RouteParameter.Optional
+            });
         }
     }
 }

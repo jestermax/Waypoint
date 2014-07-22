@@ -178,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\AuthenticatedApiController.cs" />
+    <Compile Include="ApiControllers\SignInController.cs" />
     <Compile Include="ApiControllers\UserLocationController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

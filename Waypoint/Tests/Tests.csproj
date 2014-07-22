@@ -59,7 +59,9 @@
   <ItemGroup>
     <Compile Include="Geocoding\MapQuestGeocoderTest.cs" />
     <Compile Include="Geocoding\NominatimGeocoderTest.cs" />
+    <Compile Include="Helpers\EmailValidatorTest.cs" />
     <Compile Include="KnownId\KnownIdTest.cs" />
+    <Compile Include="Models\CreatePlaceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +77,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApiControllers\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

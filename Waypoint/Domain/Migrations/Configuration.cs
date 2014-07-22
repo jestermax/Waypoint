@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Runtime.InteropServices;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -32,8 +33,16 @@ namespace Domain.Migrations
             context.Accounts.AddOrUpdate(new Account
             {
                 Id = AppConfiguration.WaypointAccountId,
-                Name = "Waypoint",
+                Name = AppConfiguration.WaypointAccountName,
                 DateCreated = new DateTime(2014, 7, 19, 23, 02, 0).ToUniversalTime(),
+                DateModified = DateTime.UtcNow
+            });
+
+            context.Accounts.AddOrUpdate(new Account
+            {
+                Id = AppConfiguration.UnitTestsAccountId,
+                Name = AppConfiguration.UnitTestsAccountName,
+                DateCreated = new DateTime(2014, 7, 22, 16, 30, 0).ToUniversalTime(),
                 DateModified = DateTime.UtcNow
             });
 
@@ -41,11 +50,8 @@ namespace Domain.Migrations
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-            const string waypointAdministratorRoleName = "Waypoint Administrator";
-            const string accountAdministratorRoleName = "Administrator";
-
-            roleManager.Create(new IdentityRole(waypointAdministratorRoleName));
-            roleManager.Create(new IdentityRole(accountAdministratorRoleName));
+            roleManager.Create(new IdentityRole(AppConfiguration.WaypointAdministratorRoleName));
+            roleManager.Create(new IdentityRole(AppConfiguration.AdministratorRoleName));
 
             var waypointAccount = context.Accounts.Find(AppConfiguration.WaypointAccountId);
 
@@ -58,7 +64,11 @@ namespace Domain.Migrations
                 Id = AppConfiguration.AdamUserId,
                 LockoutEnabled = false,
                 Account = waypointAccount
-            }, "Super3vilGenius");
+            }, "Super3vilGenius", new List<string>
+            {
+                AppConfiguration.WaypointAdministratorRoleName,
+                AppConfiguration.AdministratorRoleName
+            });
 
             AddOrUpdateApplicationUser(context, userManager, new ApplicationUser
             {
@@ -71,7 +81,7 @@ namespace Domain.Migrations
                 Account = waypointAccount
             }, "snowbird", new List<string>
             {
-                "accountAdministratorRoleName"
+                AppConfiguration.AdministratorRoleName
             });
 
             AddOrUpdateApplicationUser(context, userManager, new ApplicationUser
@@ -85,7 +95,7 @@ namespace Domain.Migrations
                 Account = waypointAccount
             }, "kathryn", new List<String>
             {
-                "accountAdministratorRoleName"
+                AppConfiguration.AdministratorRoleName
             });
 
             // Seed countries table
@@ -107,16 +117,52 @@ namespace Domain.Migrations
                 }
             );
 
+            // TODO: Seed places table
+
             base.Seed(context);
         }
 
-        private static void AddOrUpdateApplicationUser(IdentityDbContext<ApplicationUser, IdentityRole, string, IdentityUserLogin, IdentityUserRole, IdentityUserClaim> context, UserManager<ApplicationUser, string> userManager, ApplicationUser applicationUser, string password, List<string> roles = null)
+        private static async void AddOrUpdateApplicationUser(IdentityDbContext<ApplicationUser, IdentityRole, string, IdentityUserLogin, IdentityUserRole, IdentityUserClaim> context, UserManager<ApplicationUser, string> userManager, ApplicationUser applicationUser, string password, IEnumerable<string> roles = null)
         {
             var userExists = context.Users.Any(u => u.Email.Equals(applicationUser.Email));
 
             if (userExists)
             {
-                // TODO: implement update
+                var existing = context.Users.Find(applicationUser.Id);
+
+                if (existing == null)
+                {
+                    throw new Exception(String.Format("Could not update user: {0}", applicationUser.Email));
+                }
+
+                existing.UserName = applicationUser.UserName;
+                existing.Email = applicationUser.Email;
+                existing.AccessFailedCount = applicationUser.AccessFailedCount;
+                existing.EmailConfirmed = applicationUser.EmailConfirmed;
+                existing.Id = applicationUser.Id;
+                existing.LockoutEnabled = applicationUser.LockoutEnabled;
+                existing.Account = applicationUser.Account;
+
+                if (roles != null)
+                {
+                    var existingRoles = await userManager.GetRolesAsync(applicationUser.Id);
+
+                    foreach (var existingRole in existingRoles)
+                    {
+                        userManager.RemoveFromRole(applicationUser.Id, existingRole);
+                    }
+
+                    foreach (var role in roles)
+                    {
+                        if (!await userManager.IsInRoleAsync(applicationUser.Id, role))
+                        {
+                            userManager.AddToRole(applicationUser.Id, role);
+                        }
+                    }
+                }
+
+                context.Entry(existing).State = EntityState.Modified;
+                context.SaveChanges();
             }
             else
             {

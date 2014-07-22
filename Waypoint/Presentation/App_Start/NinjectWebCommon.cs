@@ -56,6 +56,7 @@ namespace Presentation
         private static void RegisterServices(IBindingRoot kernel)
         {
             kernel.Bind<Domain.Repositories.IApiTokenRepository>().To<Domain.Repositories.ApiTokenRepository>();
+            kernel.Bind<Domain.Repositories.IPlaceRepository>().To<Domain.Repositories.PlaceRepository>();
             kernel.Bind<Domain.Repositories.IUserRepository>().To<Domain.Repositories.UserRepository>();
             kernel.Bind<Domain.Repositories.IUserLocationRepository>().To<Domain.Repositories.UserLocationRepository>();
         }
