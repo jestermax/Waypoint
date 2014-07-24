@@ -11,11 +11,5 @@ namespace Domain.Configuration
         public static readonly string CountryMexicoId = "f122e8f1-7b83-4bb3-98e4-d1cab856a605";
 
         #endregion
-
-        #region User location reasons
-
-        public static readonly string UserLocationReasonIntervalId = "7ab098a4-eafc-423b-b77d-487f52504d09";
-
-        #endregion
     }
 }

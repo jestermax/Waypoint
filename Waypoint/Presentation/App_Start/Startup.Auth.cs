@@ -8,7 +8,6 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 
 using Domain.Configuration;
-using Domain.Database;
 using Domain.Models;
 
 namespace Presentation

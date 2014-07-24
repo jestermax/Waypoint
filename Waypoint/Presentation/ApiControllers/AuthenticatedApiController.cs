@@ -14,6 +14,8 @@ namespace Presentation.ApiControllers
 {
     public class AuthenticatedApiController : ApiController
     {
+        protected ApplicationDbContext Context = ApplicationDbContext.Create();
+
         protected ApplicationUser ApplicationUser;
 
         protected IUserRepository UserRepository;

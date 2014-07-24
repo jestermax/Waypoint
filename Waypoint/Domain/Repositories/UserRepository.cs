@@ -1,11 +1,16 @@
 ﻿using System;
 
+using Domain.Configuration;
 using Domain.Models;
 
 namespace Domain.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : BaseRepository, IUserRepository
     {
+        public UserRepository(ApplicationDbContext context)
+            : base(context)
+        { }
+
         public ApplicationUser Get(string id)
         {
             throw new NotImplementedException();

@@ -3,7 +3,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-using Domain.Database;
 using Domain.Email;
 using Domain.Models;
 using Domain.SMS;

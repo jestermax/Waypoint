@@ -7,7 +7,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 using Domain.Configuration;
-using Domain.Database;
 using Domain.Models;
 
 namespace Domain.Migrations

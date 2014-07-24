@@ -1,37 +1,43 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 
-using Domain.Database;
+using Domain.Configuration;
 using Domain.Models;
 
 namespace Domain.Repositories
 {
-    public class ApiTokenRepository : IApiTokenRepository
+    public class ApiTokenRepository : BaseRepository, IApiTokenRepository
     {
-        private readonly ApplicationDbContext _context = ApplicationDbContext.Create();
+        public ApiTokenRepository(ApplicationDbContext context)
+            : base(context)
+        { }
 
         public ApiToken Get(string token)
         {
-            return _context.ApiTokens.FirstOrDefault(a => a.Token.Equals(token));
+            return Context.ApiTokens.First(a => a.Token.Equals(token));
         }
 
         public ApiToken[] Where(Func<ApiToken, bool> filter)
         {
-            return _context.ApiTokens.Where(filter).OrderBy(a => a.DateIssued).ToArray();
+            return Context.ApiTokens
+                .Where(filter)
+                .OrderBy(a => a.DateIssued)
+                .ToArray();
         }
 
         public ApiToken Add(ApiToken apiToken)
         {
-            _context.ApiTokens.Add(apiToken);
-            _context.SaveChanges();
+            Context.ApiTokens.Add(apiToken);
+            Context.SaveChanges();
 
             return apiToken;
         }
 
         public bool Update(string id, ApiToken apiToken)
         {
-            var existing = _context.ApiTokens.Find(id);
+            var existing = Context.ApiTokens.Find(id);
 
             if (existing == null)
             {
@@ -41,24 +47,25 @@ namespace Domain.Repositories
             existing.DateExpires = apiToken.DateExpires;
             existing.DateIssued = apiToken.DateIssued;
             existing.Token = apiToken.Token;
+            existing.User = apiToken.User;
 
-            _context.Entry(existing).State = EntityState.Modified;
-            _context.SaveChanges();
-
+            Context.Entry(existing).State = EntityState.Modified;
+            Context.SaveChanges();
+            
             return true;
         }
 
         public bool Remove(string id)
         {
-            var apiToken = _context.ApiTokens.Find(id);
+            var apiToken = Context.ApiTokens.Find(id);
 
             if (apiToken == null)
             {
                 return false;
             }
 
-            _context.ApiTokens.Remove(apiToken);
-            _context.SaveChanges();
+            Context.ApiTokens.Remove(apiToken);
+            Context.SaveChanges();
 
             return true;
         }

@@ -15,10 +15,6 @@ namespace Domain.Models
         public virtual ApplicationUser User { get; set; }
 
         [Required]
-        [MaxLength(128)]
-        public virtual UserLocationReason UserLocationReason { get; set; }
-
-        [Required]
         public DbGeography Location { get; set; }
 
         [Required]

@@ -81,10 +81,12 @@
     <Compile Include="Authentication\IAuthenticationService.cs" />
     <Compile Include="Authentication\MockAuthenticationService.cs" />
     <Compile Include="Configuration\HttpContextFactory.cs" />
-    <Compile Include="Database\ApplicationDbContext.cs" />
+    <Compile Include="Configuration\ApplicationDbContext.cs" />
     <Compile Include="Dto\Inbound\LocationUpdateDto.cs" />
     <Compile Include="Dto\Inbound\LoginAttemptDto.cs" />
+    <Compile Include="Dto\Outbound\ApiTokenDto.cs" />
     <Compile Include="Dto\Outbound\LoginDto.cs" />
+    <Compile Include="Dto\Outbound\UserDto.cs" />
     <Compile Include="Dto\Outbound\UserLocationDto.cs" />
     <Compile Include="Geocoding\AggregatedGeocoder.cs" />
     <Compile Include="Helpers\EmailValidator.cs" />
@@ -125,6 +127,10 @@
     <Compile Include="Migrations\201407221441376_AlterPlaceTableExtremalPoints.Designer.cs">
       <DependentUpon>201407221441376_AlterPlaceTableExtremalPoints.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407241438031_RemoveUserLocationReason.cs" />
+    <Compile Include="Migrations\201407241438031_RemoveUserLocationReason.Designer.cs">
+      <DependentUpon>201407241438031_RemoveUserLocationReason.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApiToken.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Configuration\ApplicationUserManager.cs" />
@@ -146,11 +152,12 @@
     <Compile Include="Configuration\KnownId.cs" />
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\UserLocation.cs" />
-    <Compile Include="Models\UserLocationReason.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApiTokenRepository.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\IApiTokenRepository.cs" />
     <Compile Include="Repositories\IPlaceRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IUserLocationRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\PlaceRepository.cs" />
@@ -198,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407221441376_AlterPlaceTableExtremalPoints.resx">
       <DependentUpon>201407221441376_AlterPlaceTableExtremalPoints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407241438031_RemoveUserLocationReason.resx">
+      <DependentUpon>201407241438031_RemoveUserLocationReason.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

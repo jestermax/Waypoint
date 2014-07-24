@@ -3,23 +3,25 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Domain.Database;
+using Domain.Configuration;
 using Domain.Models;
 
 namespace Domain.Repositories
 {
-    public class PlaceRepository : IPlaceRepository
+    public class PlaceRepository : BaseRepository, IPlaceRepository
     {
-        private readonly ApplicationDbContext _context = ApplicationDbContext.Create();
+        public PlaceRepository(ApplicationDbContext context)
+            : base(context)
+        { }
 
         public async Task<Place> Get(string id)
         {
-            return await _context.Places.FindAsync(id);
+            return await Context.Places.FindAsync(id);
         }
 
         public async Task<Place[]> Where(Func<Place, bool> filter)
         {
-            return await _context.Places
+            return await Context.Places
                 .Where(filter)
                 .OrderBy(p => p.Name)
                 .AsQueryable()
@@ -28,15 +30,15 @@ namespace Domain.Repositories
 
         public async Task<Place> Add(Place place)
         {
-            _context.Places.Add(place);
-            await _context.SaveChangesAsync();
+            Context.Places.Add(place);
+            await Context.SaveChangesAsync();
 
             return place;
         }
 
         public async Task<bool> Update(string id, Place place)
         {
-            var existing = await _context.Places.FindAsync(id);
+            var existing = await Context.Places.FindAsync(id);
 
             if (existing == null)
             {
@@ -51,23 +53,23 @@ namespace Domain.Repositories
             existing.MinimumLongitude = place.MinimumLongitude;
             existing.Name = place.Name;
 
-            _context.Entry(existing).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            Context.Entry(existing).State = EntityState.Modified;
+            await Context.SaveChangesAsync();
 
             return true;
         }
 
         public async Task<bool> Remove(string id)
         {
-            var place = await _context.Places.FindAsync(id);
+            var place = await Context.Places.FindAsync(id);
 
             if (place == null)
             {
                 return false;
             }
 
-            _context.Places.Remove(place);
-            await _context.SaveChangesAsync();
+            Context.Places.Remove(place);
+            await Context.SaveChangesAsync();
 
             return true;
         }

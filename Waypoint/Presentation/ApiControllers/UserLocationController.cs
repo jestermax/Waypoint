@@ -59,6 +59,11 @@ namespace Presentation.ApiControllers
         [System.Web.Mvc.HttpPost]
         public async Task<UserLocationDto> Post(LocationUpdateDto locationUpdate)
         {
+            if (locationUpdate == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
+
             if ((Math.Abs(locationUpdate.latitude) < Double.Epsilon) | (Math.Abs(locationUpdate.longitude) < Double.Epsilon))
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -96,11 +101,6 @@ namespace Presentation.ApiControllers
                 locationUpdate.speed = AppConfiguration.MaximumSpeed;
             }
 
-            if (String.IsNullOrEmpty(locationUpdate.reasonId) || String.IsNullOrWhiteSpace(locationUpdate.reasonId))
-            {
-                locationUpdate.reasonId = KnownId.UserLocationReasonIntervalId;
-            }
-
             var geocoder = new AggregatedGeocoder();
 
             var address = await geocoder.ReverseGeocodeAsync(locationUpdate.latitude, locationUpdate.longitude);
@@ -127,11 +127,7 @@ namespace Presentation.ApiControllers
                 Location = DbGeography.PointFromText(String.Format("POINT({1} {0})",
                     locationUpdate.latitude,
                     locationUpdate.longitude),
-                    AppConfiguration.CoordinateSystemId),
-                UserLocationReason = new UserLocationReason
-                {
-                    Id = locationUpdate.reasonId
-                }
+                    AppConfiguration.CoordinateSystemId)
             });
 
             if (userLocation == null)

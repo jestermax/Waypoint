@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 using Domain.Models;
 
-namespace Domain.Database
+namespace Domain.Configuration
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -22,6 +22,5 @@ namespace Domain.Database
         public DbSet<Country> Countries { get; set; }
         public DbSet<Place> Places { get; set; }
         public DbSet<UserLocation> UserLocations { get; set; }
-        public DbSet<UserLocationReason> UserLocationReasons { get; set; }
     }
 }

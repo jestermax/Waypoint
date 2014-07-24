@@ -4,7 +4,7 @@ using Domain.Models;
 
 namespace Domain.Repositories
 {
-    public interface IApiTokenRepository
+    public interface IApiTokenRepository : IRepository
     {
         ApiToken Get(string token);
 

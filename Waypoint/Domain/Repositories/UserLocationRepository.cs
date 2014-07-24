@@ -3,23 +3,25 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Domain.Database;
+using Domain.Configuration;
 using Domain.Models;
 
 namespace Domain.Repositories
 {
-    public class UserLocationRepository : IUserLocationRepository
+    public class UserLocationRepository : BaseRepository, IUserLocationRepository
     {
-        private readonly ApplicationDbContext _context = ApplicationDbContext.Create();
+        public UserLocationRepository(ApplicationDbContext context)
+            : base(context)
+        { }
 
         public async Task<UserLocation> Get(string id)
         {
-            return await _context.UserLocations.FindAsync(id);
+            return await Context.UserLocations.FindAsync(id);
         }
 
         public async Task<UserLocation[]> Where(Func<UserLocation, bool> filter)
         {
-            return await _context.UserLocations
+            return await Context.UserLocations
                 .Where(filter)
                 .OrderByDescending(u => u.DateSent)
                 .AsQueryable()
@@ -28,8 +30,8 @@ namespace Domain.Repositories
 
         public async Task<UserLocation> Add(UserLocation userLocation)
         {
-            _context.UserLocations.Add(userLocation);
-            await _context.SaveChangesAsync();
+            Context.UserLocations.Add(userLocation);
+            await Context.SaveChangesAsync();
 
             return userLocation;
         }
@@ -41,15 +43,15 @@ namespace Domain.Repositories
 
         public async Task<bool> Remove(string id)
         {
-            var userLocation = await _context.UserLocations.FindAsync(id);
+            var userLocation = await Context.UserLocations.FindAsync(id);
 
             if (userLocation == null)
             {
                 return false;
             }
 
-            _context.UserLocations.Remove(userLocation);
-            await _context.SaveChangesAsync();
+            Context.UserLocations.Remove(userLocation);
+            await Context.SaveChangesAsync();
 
             return true;
         }
