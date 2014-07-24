@@ -16,11 +16,13 @@ namespace Presentation.ApiControllers
     public class UserLocationController : AuthenticatedApiController
     {
         private readonly IUserLocationRepository _userLocationRepository;
+        private readonly IPlaceRepository _placeRepository;
 
-        public UserLocationController(IUserLocationRepository userLocationRepository, IUserRepository userRepository, IApiTokenRepository apiTokenRepository)
+        public UserLocationController(IUserLocationRepository userLocationRepository, IPlaceRepository placeRepository, IUserRepository userRepository, IApiTokenRepository apiTokenRepository)
             : base(userRepository, apiTokenRepository)
         {
             _userLocationRepository = userLocationRepository;
+            _placeRepository = placeRepository;
         }
 
         [System.Web.Mvc.HttpGet]
@@ -130,12 +132,12 @@ namespace Presentation.ApiControllers
                     AppConfiguration.CoordinateSystemId)
             });
 
-            if (userLocation == null)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            //if (userLocation == null)
+            //{
+            //    throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            //}
 
-            //if (!UserProfile.UserLocationCache.PreviousLocationId.HasValue || !UserProfile.UserLocationCache.CurrentLocationId.HasValue)
+            //if (!ApplicationUser.UserLocationCache.PreviousLocationId.HasValue || !UserProfile.UserLocationCache.CurrentLocationId.HasValue)
             //{
             //    return new UserLocationDto(userLocation);
             //}

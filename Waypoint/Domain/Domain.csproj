@@ -131,6 +131,10 @@
     <Compile Include="Migrations\201407241438031_RemoveUserLocationReason.Designer.cs">
       <DependentUpon>201407241438031_RemoveUserLocationReason.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407241719115_AddTimeZoneTable.cs" />
+    <Compile Include="Migrations\201407241719115_AddTimeZoneTable.Designer.cs">
+      <DependentUpon>201407241719115_AddTimeZoneTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApiToken.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Configuration\ApplicationUserManager.cs" />
@@ -151,6 +155,7 @@
     <Compile Include="Models\Country.cs" />
     <Compile Include="Configuration\KnownId.cs" />
     <Compile Include="Models\Place.cs" />
+    <Compile Include="Models\TimeZone.cs" />
     <Compile Include="Models\UserLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApiTokenRepository.cs" />
@@ -170,7 +175,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Extensions\" />
+    <Folder Include="Logging\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -208,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407241438031_RemoveUserLocationReason.resx">
       <DependentUpon>201407241438031_RemoveUserLocationReason.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407241719115_AddTimeZoneTable.resx">
+      <DependentUpon>201407241719115_AddTimeZoneTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

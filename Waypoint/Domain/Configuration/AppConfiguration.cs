@@ -27,7 +27,6 @@ namespace Domain.Configuration
         public static readonly string MapQuestApiKey = "Fmjtd%7Cluur2102lu%2C7l%3Do5-90yl14";
 
         // Global constants
-        public static readonly string DbContextName = "WaypointContext";
         public static readonly string ConnectionStringName = "DefaultConnection";
         public static readonly int CoordinateSystemId = 4326;
         public static readonly string AddressUnavailableMessage = "Address is unavailable";

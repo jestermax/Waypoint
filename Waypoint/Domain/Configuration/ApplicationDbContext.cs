@@ -9,7 +9,7 @@ namespace Domain.Configuration
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", false)
+            : base(AppConfiguration.ConnectionStringName, false)
         { }
 
         public static ApplicationDbContext Create()
@@ -18,9 +18,15 @@ namespace Domain.Configuration
         }
 
         public DbSet<Account> Accounts { get; set; }
+
         public DbSet<ApiToken> ApiTokens { get; set; }
+
         public DbSet<Country> Countries { get; set; }
+
         public DbSet<Place> Places { get; set; }
+
+        public DbSet<TimeZone> TimeZones { get; set; }
+
         public DbSet<UserLocation> UserLocations { get; set; }
     }
 }

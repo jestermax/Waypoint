@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Linq;
 
 using Microsoft.AspNet.Identity;
@@ -28,75 +30,6 @@ namespace Domain.Migrations
                 System.Diagnostics.Debugger.Launch();
             }
 
-            // Seed accounts table
-            context.Accounts.AddOrUpdate(new Account
-            {
-                Id = AppConfiguration.WaypointAccountId,
-                Name = AppConfiguration.WaypointAccountName,
-                DateCreated = new DateTime(2014, 7, 19, 23, 02, 0).ToUniversalTime(),
-                DateModified = DateTime.UtcNow
-            });
-
-            context.Accounts.AddOrUpdate(new Account
-            {
-                Id = AppConfiguration.UnitTestsAccountId,
-                Name = AppConfiguration.UnitTestsAccountName,
-                DateCreated = new DateTime(2014, 7, 22, 16, 30, 0).ToUniversalTime(),
-                DateModified = DateTime.UtcNow
-            });
-
-            // Seed users table
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-
-            roleManager.Create(new IdentityRole(AppConfiguration.WaypointAdministratorRoleName));
-            roleManager.Create(new IdentityRole(AppConfiguration.AdministratorRoleName));
-
-            var waypointAccount = context.Accounts.Find(AppConfiguration.WaypointAccountId);
-
-            AddOrUpdateApplicationUser(context, userManager, new ApplicationUser
-            {
-                UserName = "adamstirtan@gmail.com",
-                Email = "adamstirtan@gmail.com",
-                AccessFailedCount = 0,
-                EmailConfirmed = true,
-                Id = AppConfiguration.AdamUserId,
-                LockoutEnabled = false,
-                Account = waypointAccount
-            }, "Super3vilGenius", new List<string>
-            {
-                AppConfiguration.WaypointAdministratorRoleName,
-                AppConfiguration.AdministratorRoleName
-            });
-
-            AddOrUpdateApplicationUser(context, userManager, new ApplicationUser
-            {
-                UserName = "lesholmes1@sympatico.ca",
-                Email = "lesholmes1@sympatico.ca",
-                AccessFailedCount = 0,
-                EmailConfirmed = true,
-                Id = AppConfiguration.LesUserId,
-                LockoutEnabled = false,
-                Account = waypointAccount
-            }, "snowbird", new List<string>
-            {
-                AppConfiguration.AdministratorRoleName
-            });
-
-            AddOrUpdateApplicationUser(context, userManager, new ApplicationUser
-            {
-                UserName = "carlo.giannoccaro@gmail.com",
-                Email = "carlo.giannoccaro@gmail.com",
-                AccessFailedCount = 0,
-                EmailConfirmed = true,
-                Id = AppConfiguration.CarloUserId,
-                LockoutEnabled = false,
-                Account = waypointAccount
-            }, "kathryn", new List<String>
-            {
-                AppConfiguration.AdministratorRoleName
-            });
-
             // Seed countries table
             context.Countries.AddOrUpdate(
                 new Country
@@ -114,9 +47,154 @@ namespace Domain.Migrations
                     Id = KnownId.CountryMexicoId,
                     Name = "Mexico"
                 }
-            );
+                );
 
-            // TODO: Seed places table
+            context.SaveChanges();
+
+            // Seed timezones table
+            context.TimeZones.AddOrUpdate(
+                new Models.TimeZone
+                {
+                    Id = KnownId.TimeZoneHawaiiId,
+                    Name = "(GMT-10:00) Hawaii",
+                    Offset = -36000,
+                    SortOrder = 0
+                },
+                new Models.TimeZone
+                {
+                    Id = KnownId.TimeZoneAlaskaId,
+                    Name = "(GMT-09:00) Alaska",
+                    Offset = -32400,
+                    SortOrder = 0
+                },
+                new Models.TimeZone
+                {
+                    Id = KnownId.TimeZonePacificId,
+                    Name = "(GMT-08:00) Pacific Time (US & Canada)",
+                    Offset = -28800,
+                    SortOrder = 0
+                },
+                new Models.TimeZone
+                {
+                    Id = KnownId.TimeZoneArizonaId,
+                    Name = "(GMT-07:00) Arizona",
+                    Offset = -25200,
+                    SortOrder = 0
+                },
+                new Models.TimeZone
+                {
+                    Id = KnownId.TimeZoneMountainId,
+                    Name = "(GMT-07:00) Mountain Time (US & Canada)",
+                    Offset = -25200,
+                    SortOrder = 0
+                },
+                new Models.TimeZone
+                {
+                    Id = KnownId.TimeZoneCentralId,
+                    Name = "(GMT-06:00) Central Time (US & Canada)",
+                    Offset = -21600,
+                    SortOrder = 0
+                },
+                new Models.TimeZone
+                {
+                    Id = KnownId.TimeZoneEasternId,
+                    Name = "(GMT-05:00) Eastern Time (US & Canada)",
+                    Offset = -18000,
+                    SortOrder = 0
+                },
+                new Models.TimeZone
+                {
+                    Id = KnownId.TimeZoneIndianaEastId,
+                    Name = "(GMT-05:00) Indiana (East)",
+                    Offset = -18000,
+                    SortOrder = 0
+                }
+                );
+
+            context.SaveChanges();
+
+            // Seed accounts table
+            context.Accounts.AddOrUpdate(new Account
+            {
+                Id = AppConfiguration.WaypointAccountId,
+                Name = AppConfiguration.WaypointAccountName,
+                DateCreated = new DateTime(2014, 7, 19, 23, 02, 0).ToUniversalTime(),
+                DateModified = DateTime.UtcNow,
+            });
+
+            context.SaveChanges();
+
+            context.Accounts.AddOrUpdate(new Account
+            {
+                Id = AppConfiguration.UnitTestsAccountId,
+                Name = AppConfiguration.UnitTestsAccountName,
+                DateCreated = new DateTime(2014, 7, 22, 16, 30, 0).ToUniversalTime(),
+                DateModified = DateTime.UtcNow
+            });
+
+            context.SaveChanges();
+
+            // Seed users table
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            roleManager.Create(new IdentityRole(AppConfiguration.WaypointAdministratorRoleName));
+            roleManager.Create(new IdentityRole(AppConfiguration.AdministratorRoleName));
+
+            var waypointAccount = context.Accounts.Find(AppConfiguration.WaypointAccountId);
+            var easternTimeZone = context.TimeZones.Find(KnownId.TimeZoneEasternId);
+
+            AddOrUpdateApplicationUser(context, userManager, new ApplicationUser
+            {
+                UserName = "adamstirtan@gmail.com",
+                Email = "adamstirtan@gmail.com",
+                AccessFailedCount = 0,
+                EmailConfirmed = true,
+                Id = AppConfiguration.AdamUserId,
+                LockoutEnabled = false,
+                Account = waypointAccount,
+                TimeZone = easternTimeZone
+            }, "Super3vilGenius", new List<string>
+            {
+                AppConfiguration.WaypointAdministratorRoleName,
+                AppConfiguration.AdministratorRoleName
+            });
+
+            context.SaveChanges();
+
+            AddOrUpdateApplicationUser(context, userManager, new ApplicationUser
+            {
+                UserName = "lesholmes1@sympatico.ca",
+                Email = "lesholmes1@sympatico.ca",
+                AccessFailedCount = 0,
+                EmailConfirmed = true,
+                Id = AppConfiguration.LesUserId,
+                LockoutEnabled = false,
+                Account = waypointAccount,
+                TimeZone = easternTimeZone
+            }, "snowbird", new List<string>
+            {
+                AppConfiguration.AdministratorRoleName
+            });
+
+            context.SaveChanges();
+
+            AddOrUpdateApplicationUser(context, userManager, new ApplicationUser
+            {
+                UserName = "carlo.giannoccaro@gmail.com",
+                Email = "carlo.giannoccaro@gmail.com",
+                AccessFailedCount = 0,
+                EmailConfirmed = true,
+                Id = AppConfiguration.CarloUserId,
+                LockoutEnabled = false,
+                Account = waypointAccount,
+                TimeZone = easternTimeZone
+            }, "kathryn", new List<String>
+            {
+                AppConfiguration.AdministratorRoleName
+            });
+
+            context.SaveChanges();
 
             base.Seed(context);
         }

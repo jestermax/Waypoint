@@ -18,6 +18,8 @@ namespace Domain.Models
         [Required]
         public virtual Account Account { get; set; }
 
+        public virtual TimeZone TimeZone { get; set; }
+
         public virtual ICollection<ApiToken> ApiTokens { get; set; }
     }
 }
