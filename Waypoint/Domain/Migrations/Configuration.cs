@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Validation;
 using System.Linq;
 
 using Microsoft.AspNet.Identity;
@@ -142,6 +140,8 @@ namespace Domain.Migrations
             roleManager.Create(new IdentityRole(AppConfiguration.AdministratorRoleName));
 
             var waypointAccount = context.Accounts.Find(AppConfiguration.WaypointAccountId);
+            var unitTestsAccount = context.Accounts.Find(AppConfiguration.UnitTestsAccountId);
+
             var easternTimeZone = context.TimeZones.Find(KnownId.TimeZoneEasternId);
 
             AddOrUpdateApplicationUser(context, userManager, new ApplicationUser
@@ -196,10 +196,27 @@ namespace Domain.Migrations
 
             context.SaveChanges();
 
+            AddOrUpdateApplicationUser(context, userManager, new ApplicationUser
+            {
+                UserName = AppConfiguration.UnitTestsEmail,
+                Email = AppConfiguration.UnitTestsEmail,
+                AccessFailedCount = 0,
+                EmailConfirmed = true,
+                Id = AppConfiguration.UnitTestsUserId,
+                LockoutEnabled = false,
+                Account = unitTestsAccount,
+                TimeZone = easternTimeZone
+            }, AppConfiguration.UnitTestsPassword, new List<string>
+            {
+                AppConfiguration.AdministratorRoleName
+            });
+
+            context.SaveChanges();
+
             base.Seed(context);
         }
 
-        private static async void AddOrUpdateApplicationUser(IdentityDbContext<ApplicationUser, IdentityRole, string, IdentityUserLogin, IdentityUserRole, IdentityUserClaim> context, UserManager<ApplicationUser, string> userManager, ApplicationUser applicationUser, string password, IEnumerable<string> roles = null)
+        private static void AddOrUpdateApplicationUser(IdentityDbContext<ApplicationUser, IdentityRole, string, IdentityUserLogin, IdentityUserRole, IdentityUserClaim> context, UserManager<ApplicationUser, string> userManager, ApplicationUser applicationUser, string password, IEnumerable<string> roles = null)
         {
             var userExists = context.Users.Any(u => u.Email.Equals(applicationUser.Email));
 
@@ -219,22 +236,20 @@ namespace Domain.Migrations
                 existing.Id = applicationUser.Id;
                 existing.LockoutEnabled = applicationUser.LockoutEnabled;
                 existing.Account = applicationUser.Account;
+                existing.TimeZone = applicationUser.TimeZone;
 
                 if (roles != null)
                 {
-                    var existingRoles = await userManager.GetRolesAsync(applicationUser.Id);
+                    var existingRoles = userManager.GetRoles(applicationUser.Id);
 
                     foreach (var existingRole in existingRoles)
                     {
                         userManager.RemoveFromRole(applicationUser.Id, existingRole);
                     }
 
-                    foreach (var role in roles)
+                    foreach (var role in roles.Where(role => !userManager.IsInRole(applicationUser.Id, role)))
                     {
-                        if (!await userManager.IsInRoleAsync(applicationUser.Id, role))
-                        {
-                            userManager.AddToRole(applicationUser.Id, role);
-                        }
+                        userManager.AddToRole(applicationUser.Id, role);
                     }
                 }
 
