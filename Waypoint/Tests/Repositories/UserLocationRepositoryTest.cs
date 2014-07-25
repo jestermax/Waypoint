@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity.Spatial;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.AspNet.Identity;
@@ -30,7 +31,7 @@ namespace Tests.Repositories
             var address = RandomStringGenerator.Create(32);
             var utcNow = DateTime.UtcNow;
 
-            var applicationUser = await userManager.FindAsync(AppConfiguration.UnitTestsEmail, AppConfiguration.UnitTestsPassword);
+            var applicationUser = await userManager.FindByIdAsync(AppConfiguration.UnitTestsUserId);
 
             Assert.IsNotNull(applicationUser);
             Assert.AreEqual(AppConfiguration.UnitTestsEmail, applicationUser.Email);

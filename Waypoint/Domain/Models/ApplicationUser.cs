@@ -18,7 +18,20 @@ namespace Domain.Models
         [Required]
         public virtual Account Account { get; set; }
 
+        [Required]
         public virtual TimeZone TimeZone { get; set; }
+
+        [Required]
+        [MaxLength(128)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [MaxLength(128)]
+        public string LastName { get; set; }
+
+        [Required]
+        [MaxLength(128)]
+        public string ProfileImage { get; set; }
 
         public virtual ICollection<ApiToken> ApiTokens { get; set; }
     }

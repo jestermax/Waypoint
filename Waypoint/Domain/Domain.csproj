@@ -132,6 +132,10 @@
     <Compile Include="Migrations\201407241719115_AddTimeZoneTable.Designer.cs">
       <DependentUpon>201407241719115_AddTimeZoneTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407251313597_ExtendUserWithNameAndProfileImage.cs" />
+    <Compile Include="Migrations\201407251313597_ExtendUserWithNameAndProfileImage.Designer.cs">
+      <DependentUpon>201407251313597_ExtendUserWithNameAndProfileImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApiToken.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Configuration\ApplicationUserManager.cs" />
@@ -213,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407241719115_AddTimeZoneTable.resx">
       <DependentUpon>201407241719115_AddTimeZoneTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407251313597_ExtendUserWithNameAndProfileImage.resx">
+      <DependentUpon>201407251313597_ExtendUserWithNameAndProfileImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

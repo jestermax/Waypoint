@@ -148,6 +148,9 @@ namespace Domain.Migrations
             {
                 UserName = "adamstirtan@gmail.com",
                 Email = "adamstirtan@gmail.com",
+                FirstName = "Adam",
+                LastName = "Stirtan",
+                ProfileImage = AppConfiguration.DefaultUserProfileImage,
                 AccessFailedCount = 0,
                 EmailConfirmed = true,
                 Id = AppConfiguration.AdamUserId,
@@ -166,6 +169,9 @@ namespace Domain.Migrations
             {
                 UserName = "lesholmes1@sympatico.ca",
                 Email = "lesholmes1@sympatico.ca",
+                FirstName = "Les",
+                LastName = "Holmes",
+                ProfileImage = AppConfiguration.DefaultUserProfileImage,
                 AccessFailedCount = 0,
                 EmailConfirmed = true,
                 Id = AppConfiguration.LesUserId,
@@ -183,6 +189,9 @@ namespace Domain.Migrations
             {
                 UserName = "carlo.giannoccaro@gmail.com",
                 Email = "carlo.giannoccaro@gmail.com",
+                FirstName = "Carlo",
+                LastName = "Giannoccaro",
+                ProfileImage = AppConfiguration.DefaultUserProfileImage,
                 AccessFailedCount = 0,
                 EmailConfirmed = true,
                 Id = AppConfiguration.CarloUserId,
@@ -200,6 +209,9 @@ namespace Domain.Migrations
             {
                 UserName = AppConfiguration.UnitTestsEmail,
                 Email = AppConfiguration.UnitTestsEmail,
+                FirstName = AppConfiguration.UnitTestsFirstName,
+                LastName = AppConfiguration.UnitTestsLastName,
+                ProfileImage = AppConfiguration.DefaultUserProfileImage,
                 AccessFailedCount = 0,
                 EmailConfirmed = true,
                 Id = AppConfiguration.UnitTestsUserId,
@@ -237,6 +249,9 @@ namespace Domain.Migrations
                 existing.LockoutEnabled = applicationUser.LockoutEnabled;
                 existing.Account = applicationUser.Account;
                 existing.TimeZone = applicationUser.TimeZone;
+                existing.FirstName = applicationUser.FirstName;
+                existing.LastName = applicationUser.LastName;
+                existing.ProfileImage = applicationUser.ProfileImage;
 
                 if (roles != null)
                 {

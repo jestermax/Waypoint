@@ -54,9 +54,12 @@ namespace Domain.Configuration
         public static readonly string WaypointAdministratorRoleName = "Waypoint Administrator";
         public static readonly string AdministratorRoleName = "Administrator";
 
-        // Place table constraint constants
+        // Place table constants
 
-        // User location constraint constants
+        // User table constants
+        public static readonly string DefaultUserProfileImage = "default.png";
+
+        // User location constants
         public static readonly int UserLocationAddressMaximumLength = 256;
 
         // Unit tests constants
@@ -117,7 +120,7 @@ namespace Domain.Configuration
         //public static readonly int UserLocationAddressMaximumLength = 250;
 
         // UserProfile table constants
-        //public static readonly string DefaultUserProfileImage = "default.png";
+        //
         //public static readonly bool DefaultUserProfileMetric = true;
         //public static readonly int FirstNameMinimumLength = 1;
         //public static readonly int FirstNameMaximumLength = 50;

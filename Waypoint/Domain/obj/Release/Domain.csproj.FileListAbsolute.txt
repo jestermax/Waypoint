@@ -33,3 +33,8 @@ C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domai
 C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.csproj.GenerateResource.Cache
 C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.AddCountryTableAndSeedDatabase.resources
 C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.AddApiTokenTable.resources
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.AddPlacesTable.resources
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.ExtendPlaceWithMinMaxLocations.resources
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.AlterPlaceTableExtremalPoints.resources
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.RemoveUserLocationReason.resources
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.AddTimeZoneTable.resources
