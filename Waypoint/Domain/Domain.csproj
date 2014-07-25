@@ -77,9 +77,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\AzureSqlAuthenticationService.cs" />
-    <Compile Include="Authentication\IAuthenticationService.cs" />
-    <Compile Include="Authentication\MockAuthenticationService.cs" />
     <Compile Include="Configuration\HttpContextFactory.cs" />
     <Compile Include="Configuration\ApplicationDbContext.cs" />
     <Compile Include="Dto\Inbound\LocationUpdateDto.cs" />
