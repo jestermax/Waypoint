@@ -256,6 +256,7 @@ namespace Domain.Migrations
                 existing.FirstName = applicationUser.FirstName;
                 existing.LastName = applicationUser.LastName;
                 existing.ProfileImage = applicationUser.ProfileImage;
+                existing.Metric = applicationUser.Metric;
 
                 if (roles != null)
                 {
