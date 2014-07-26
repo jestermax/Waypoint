@@ -83,6 +83,7 @@
     <Compile Include="Dto\Inbound\LoginAttemptDto.cs" />
     <Compile Include="Dto\Outbound\ApiTokenDto.cs" />
     <Compile Include="Dto\Outbound\LoginDto.cs" />
+    <Compile Include="Dto\Outbound\TimeZoneDto.cs" />
     <Compile Include="Dto\Outbound\UserDto.cs" />
     <Compile Include="Dto\Outbound\UserLocationDto.cs" />
     <Compile Include="Geocoding\AggregatedGeocoder.cs" />
