@@ -39,3 +39,4 @@ C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domai
 C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.RemoveUserLocationReason.resources
 C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.AddTimeZoneTable.resources
 C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.ExtendUserWithNameAndProfileImage.resources
+C:\Users\adamstirtan\Documents\GitHub\Waypoint\Waypoint\Domain\obj\Release\Domain.Migrations.AddMeasurementUnitsToUser.resources

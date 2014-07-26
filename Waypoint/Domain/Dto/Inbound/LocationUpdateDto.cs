@@ -23,8 +23,5 @@ namespace Domain.Dto.Inbound
         [Required]
         [Display(Name = "Timestamp")]
         public string timestamp { get; set; }
-
-        [Display(Name = "Reason")]
-        public string reasonId { get; set; }
     }
 }
