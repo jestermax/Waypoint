@@ -137,6 +137,10 @@
     <Compile Include="Migrations\201407251313597_ExtendUserWithNameAndProfileImage.Designer.cs">
       <DependentUpon>201407251313597_ExtendUserWithNameAndProfileImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407260145532_AddMeasurementUnitsToUser.cs" />
+    <Compile Include="Migrations\201407260145532_AddMeasurementUnitsToUser.Designer.cs">
+      <DependentUpon>201407260145532_AddMeasurementUnitsToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApiToken.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Configuration\ApplicationUserManager.cs" />
@@ -221,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407251313597_ExtendUserWithNameAndProfileImage.resx">
       <DependentUpon>201407251313597_ExtendUserWithNameAndProfileImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407260145532_AddMeasurementUnitsToUser.resx">
+      <DependentUpon>201407260145532_AddMeasurementUnitsToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

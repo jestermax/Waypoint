@@ -33,6 +33,9 @@ namespace Domain.Models
         [MaxLength(128)]
         public string ProfileImage { get; set; }
 
+        [Required]
+        public bool Metric { get; set;  }
+
         public virtual ICollection<ApiToken> ApiTokens { get; set; }
     }
 }

@@ -156,7 +156,8 @@ namespace Domain.Migrations
                 Id = AppConfiguration.AdamUserId,
                 LockoutEnabled = false,
                 Account = waypointAccount,
-                TimeZone = easternTimeZone
+                TimeZone = easternTimeZone,
+                Metric = true
             }, "Super3vilGenius", new List<string>
             {
                 AppConfiguration.WaypointAdministratorRoleName,
@@ -177,7 +178,8 @@ namespace Domain.Migrations
                 Id = AppConfiguration.LesUserId,
                 LockoutEnabled = false,
                 Account = waypointAccount,
-                TimeZone = easternTimeZone
+                TimeZone = easternTimeZone,
+                Metric = true
             }, "snowbird", new List<string>
             {
                 AppConfiguration.AdministratorRoleName
@@ -197,7 +199,8 @@ namespace Domain.Migrations
                 Id = AppConfiguration.CarloUserId,
                 LockoutEnabled = false,
                 Account = waypointAccount,
-                TimeZone = easternTimeZone
+                TimeZone = easternTimeZone,
+                Metric = true
             }, "kathryn", new List<String>
             {
                 AppConfiguration.AdministratorRoleName
@@ -217,7 +220,8 @@ namespace Domain.Migrations
                 Id = AppConfiguration.UnitTestsUserId,
                 LockoutEnabled = false,
                 Account = unitTestsAccount,
-                TimeZone = easternTimeZone
+                TimeZone = easternTimeZone,
+                Metric = true
             }, AppConfiguration.UnitTestsPassword, new List<string>
             {
                 AppConfiguration.AdministratorRoleName
